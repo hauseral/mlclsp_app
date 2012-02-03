@@ -1,6 +1,9 @@
-class PagesController < ApplicationController
-  def home
-    @title = "Home"
+class PagesController < ApplicationController  #Klasse PagesController erbt alle Objekte von der ApplicationController
+  def home                                     #Definition der Methode Home
+    @title = "Home"                            #Definition der Instanzvariablen @title
   end
 
+  def produkte
+
+  end
 end

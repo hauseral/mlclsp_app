@@ -1,5 +1,17 @@
 MlclspApp::Application.routes.draw do
-  get "pages/home"
+  get "users/new"
+
+  match '/signup', :to => 'users#new'
+
+  match '/produkte', :to => 'pages#produkte'
+  root :to => 'pages#home'
+
+
+
+
+
+
+  #get "pages/home"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
