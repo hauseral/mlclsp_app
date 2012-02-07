@@ -1,12 +1,15 @@
 MlclspApp::Application.routes.draw do
+  resources :demands
+
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]
 
   match '/signup', :to => 'users#new'
   match '/signin', :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
+ # match 'demands/show',  :to => 'demands#show'
+#  match '/new', :to => 'demands#new'
 
-  match '/produkte', :to => 'pages#produkte'
   root :to => 'pages#home'
 
 

@@ -1,7 +1,9 @@
 <header>
   <nav class="round">
     <ul>
-      <li><%= link_to "Produkte", produkte_path %></li>
+      <% if signed_in? %>
+      <p><li><%= link_to "MLCLSP", demands_path %> you can type in the quantites of your products  </li></p>
+      <% end %>
       <li><%= link_to "Home", root_path %></li>
       <% if signed_in? %>
       <li><%= link_to "Profile", current_user %></li>
