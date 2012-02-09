@@ -1,0 +1,30 @@
+<%= form_for(@resource_period) do |f| %>
+  <% if @resource_period.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@resource_period.errors.count, "error") %> prohibited this resource_period from being saved:</h2>
+
+      <ul>
+      <% @resource_period.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :capacity %><br />
+    <%= f.text_field :capacity %>
+  </div>
+
+  <div class="field">
+    <%= f.label :resource_id %><br />
+    <%= f.text_field :capacity %>
+  </div>
+  <div class="field">
+    <%= f.label :period_id %><br />
+    <%= f.text_field :capacity %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

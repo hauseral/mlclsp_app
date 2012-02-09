@@ -8,6 +8,7 @@
     <th>setup cost</th>
     <th>storage cost</th>
     <th>working time</th>
+    <th>start inventory</th>
   </tr>
 
 <% @products.each do |product| %>
@@ -19,6 +20,7 @@
     <td><%= product.setup_cost %></td>
     <td><%= product.storage_cost %></td>
     <td><%= product.working_time %></td>
+    <td><%= product.start_inventory %></td>
     <td><%= link_to 'Show', product %></td>
     <td><%= link_to 'Edit', edit_product_path(product) %></td>
     <td><%= link_to 'Destroy', product, confirm: 'Are you sure?', method: :delete %></td>

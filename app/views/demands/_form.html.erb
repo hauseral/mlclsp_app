@@ -12,12 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :product_name %><br />
-    <%= f.collection_select :product_name,  Product.find(:all), :id, :product_name %>
+    <%= f.label :product_id %><br />
+    <%= f.collection_select :product_id,  Product.find(:all), :id, :product_name %>
   </div>
   <div class="field">
-    <%= f.label :period %><br />
-    <%= f.text_field :period %>
+    <%= f.label :period_id %><br />
+    <%= f.collection_select :period_id,  Period.find(:all), :id, :period_name %>
   </div>
   <div class="field">
     <%= f.label :demand_quantity %><br />

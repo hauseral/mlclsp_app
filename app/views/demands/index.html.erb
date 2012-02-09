@@ -3,14 +3,14 @@
 <table>
   <tr>
     <th>Product name</th>
-    <th>period</th>
-    <th>demand quantity</th>
+    <th>Period name</th>
+    <th>Demand quantity</th>
   </tr>
 
 <% @demands.each do |demand| %>
   <tr>
-    <td><%= demand.product_name %></td>
-    <td><%= demand.period %></td>
+    <td><%= demand.product.product_name %></td>
+    <td><%= demand.period.period_name %></td>
     <td><%= demand.demand_quantity %></td>
     <td><%= link_to 'Show', demand %></td>
     <td><%= link_to 'Edit', edit_demand_path(demand) %></td>

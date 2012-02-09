@@ -1,0 +1,31 @@
+<%= form_for(@follower_product) do |f| %>
+  <% if @follower_product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@follower_product.errors.count, "error") %> prohibited this follower_product from being saved:</h2>
+
+      <ul>
+      <% @follower_product.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+   <div class="field">
+    <%= f.label :product_id %><br />
+    <%= f.collection_select :product_id,  Product.find(:all), :id, :product_name %>
+  </div>
+
+   <div class="field">
+    <%= f.label :follower_id %><br />
+    <%= f.collection_select :follower_id,  Follower.find(:all), :id, :follower_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :coefficient %><br />
+    <%= f.text_field :coefficient %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -2,16 +2,12 @@
 
 <table>
   <tr>
-    <th>resource</th>
-    <th>period</th>
-    <th>capacity</th>
+    <th>Resource name</th>
   </tr>
 
 <% @resources.each do |resource| %>
   <tr>
-    <td><%= resource.resource %></td>
-    <td><%= resource.period %></td>
-    <td><%= resource.capacity %></td>
+    <td><%= resource.resource_name %></td>
     <td><%= link_to 'Show', resource %></td>
     <td><%= link_to 'Edit', edit_resource_path(resource) %></td>
     <td><%= link_to 'Destroy', resource, confirm: 'Are you sure?', method: :delete %></td>
@@ -21,5 +17,5 @@
 
 <br />
 
-<%= link_to 'New source', new_resource_path %>  |
+<%= link_to 'New Resource', new_resource_path %>  |
 <%= link_to 'Data Input', problem_solutions_path %>

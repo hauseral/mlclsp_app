@@ -10,20 +10,32 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120208124252) do
+ActiveRecord::Schema.define(:version => 20120209154535) do
 
   create_table "demands", :force => true do |t|
-    t.string   "product_name"
-    t.integer  "period"
+    t.integer  "product_id"
+    t.integer  "period_id"
     t.integer  "demand_quantity"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "dependencies", :force => true do |t|
-    t.string   "product_name"
-    t.string   "follower"
+  create_table "follower_products", :force => true do |t|
+    t.integer  "product_id"
+    t.integer  "follower_id"
     t.integer  "coefficient"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "followers", :force => true do |t|
+    t.string   "follower_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "periods", :force => true do |t|
+    t.integer  "period_name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -46,14 +58,21 @@ ActiveRecord::Schema.define(:version => 20120208124252) do
     t.integer  "setup_cost"
     t.integer  "storage_cost"
     t.integer  "working_time"
+    t.integer  "start_inventory"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "resource_periods", :force => true do |t|
+    t.integer  "resource_id"
+    t.integer  "period_id"
+    t.integer  "capacity"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "resources", :force => true do |t|
-    t.string   "resource"
-    t.integer  "period"
-    t.integer  "capacity"
+    t.string   "resource_name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

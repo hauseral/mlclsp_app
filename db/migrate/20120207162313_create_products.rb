@@ -8,6 +8,7 @@ class CreateProducts < ActiveRecord::Migration
       t.integer :setup_cost
       t.integer :storage_cost
       t.integer :working_time
+      t.integer :start_inventory
 
       t.timestamps
     end

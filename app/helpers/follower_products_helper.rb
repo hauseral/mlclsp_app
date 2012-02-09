@@ -1,0 +1,2 @@
+module FollowerProductsHelper
+end

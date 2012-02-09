@@ -14,52 +14,97 @@ class ProblemSolutionsController < ApplicationController
     printf(f, "/" + "\n\n")
 
     printf(f, "t / \n")
-    @sinks = Sink.find(:all)
-    @sinks.each { |si| printf(f, "t" + si.id.to_s + "\n") }
+    @demands = Demand.find(:all)
+    @demands.each { |si| printf(f, "t" + si.id.to_s + "\n") }
     printf(f, "/" + "\n\n")
 
     printf(f, "j / \n")
-    @transport_links = TransportLink.find(:all)
-    @transport_links.each { |li| printf(f, "t" + li.id.to_s + "\n") }
+    @resources = Resource.find(:all)
+    @resources.each { |li| printf(f, "t" + li.id.to_s + "\n") }
     printf(f, "/;" + "\n\n")
 
+    printf(f, "alias(k,i);\n")
+    printf(f, "NF(k,i) = no;\n")
 
-    printf(f, "LI(l,i) = no;\n")
-    printf(f, "LJ(l,j) = no;\n\n")
 
-    @transport_links.each do |li|
-      printf(f, "LI( 'l" + li.id.to_s + "', 'i" + li.source_id.to_s + "') = yes;\n")
-      printf(f, "LJ( 'l" + li.id.to_s + "', 'j" + li.sink_id.to_s + "') = yes;\n\n")
+    @dependencies.each do |li|
+      printf(f, "NF( 'k" + li.product_name.to_s + "', 'i" + li.follower.to_s + "') = yes;\n")
+
     end
+      printf(f, "PR(k,j) = no;\n\n")
+
+    @products.each do |li|
+      printf(f, "PR( 'k" + li.product_name.to_s + "', 'j" + li.resource.to_s + "') = yes;\n\n")
+    end
+
     printf(f, "\n\n")
 
-    printf(f, "Parameter\n  A(i) /\n")
+    printf(f, "Parameter\n  h(k) /\n")
 
-    @sources.each { |so| printf(f, "i" + so.id.to_s + "  " + so.supply_quantity.to_s + "\n") }
+    @products.each { |so| printf(f, "k" + so.product_name.to_s + "  " + so.storage_cost.to_s + "\n") }
     printf(f, "/" + "\n\n")
 
-    printf(f, "\nN(j) /\n")
+    printf(f, "\ns(k) /\n")
 
-    @sinks.each { |si| printf(f, "j" + si.id.to_s + "  " + si.demand_quantity.to_s + "\n") }
+    @products.each { |si| printf(f, "k" + si.product_name.to_s + "  " + si.setup_cost.to_s + "\n") }
     printf(f, "/" + "\n\n")
 
-    printf(f, "\nc(l) /\n")
+    printf(f, "\ntb(k) /\n")
 
-    @transport_links.each { |li| printf(f, "l" + li.id.to_s + "  " + li.unit_cost.to_s + "\n") }
+    @products.each { |li| printf(f, "k" + li.product_name.to_s + "  " + li.working_time.to_s + "\n") }
     printf(f, "/" + "\n\n")
+
+    printf(f, "\ntr(k) /\n")
+
+    @products.each { |li| printf(f, "k" + li.product_name.to_s + "  " + li.setup_time.to_s + "\n") }
+    printf(f, "/" + "\n\n")
+
+    printf(f, "\nz(k) /\n")
+
+    @products.each { |li| printf(f, "k" + li.product_name.to_s + "  " + li.leadtime_shift.to_s + "\n") }
+    printf(f, "/" + "\n\n")
+
+    printf(f, "\ny0(k) /\n")
+
+    @products.each { |li| printf(f, "k" + li.product_name.to_s + "  " + 0.to_s + "\n") }
+    printf(f, "/" + "\n\n")
+
+
 
     printf(f, ";\n")
     f.close
 
 
-    if File.exist?("Transportmengen_v2.txt")
-      File.delete("Transportmengen_v2.txt")
+    if File.exist?("mlclsp_solution.txt")
+      File.delete("mlclsp_solution.txt")
     end
 
     #system "C:\\Programme\\Gams Transportmodell v2"
-    system "gams Transportmodell_v2"
+    system "gams mlclsp"
 
-    @transport_links = TransportLink.find(:all)
-    render :template => "transport_links/index"
-    end
+    @product_solutions = ProductSolution.find(:all)
+    render :template => "problem_solutions/index"
+  end
+
+def read_transportation_quantities
+
+    fi=File.open("mlclsp_solution.txt", "r")
+    fi.each { |line| # printf(f,line)
+      sa=line.split(";")
+      sa0=sa[0].delete "l "
+      sa3=sa[3].delete " \n"
+      al=TransportLink.find_by_id(sa0)
+      al.transport_quantity=sa3
+      al.save
+
+    }
+
+    fi.close
+
+
+    @product_solutions = ProductSolution.find(:all)
+    render :template => "problem_solutions/index"
+
+  end
+
 end
