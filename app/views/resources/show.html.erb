@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>resource:</b>
+  <%= @resource.resource %>
+</p>
+
+<p>
+  <b>period:</b>
+  <%= @resource.period %>
+</p>
+
+<p>
+  <b>capacity:</b>
+  <%= @resource.capacity %>
+</p>
+
+
+<%= link_to 'Edit', edit_resource_path(@resource) %> |
+<%= link_to 'Back', resources_path %>

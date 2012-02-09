@@ -1,0 +1,32 @@
+<h1>Listing products</h1>
+<table>
+  <tr>
+    <th>product name</th>
+    <th>leadtime shift</th>
+    <th>resource</th>
+    <th>setup time</th>
+    <th>setup cost</th>
+    <th>storage cost</th>
+    <th>working time</th>
+  </tr>
+
+<% @products.each do |product| %>
+  <tr>
+    <td><%= product.product_name %></td>
+    <td><%= product.leadtime_shift %></td>
+    <td><%= product.resource %></td>
+    <td><%= product.setup_time %></td>
+    <td><%= product.setup_cost %></td>
+    <td><%= product.storage_cost %></td>
+    <td><%= product.working_time %></td>
+    <td><%= link_to 'Show', product %></td>
+    <td><%= link_to 'Edit', edit_product_path(product) %></td>
+    <td><%= link_to 'Destroy', product, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Product', new_product_path %> |
+<%= link_to 'Data Input', problem_solutions_path %>

@@ -1,8 +1,20 @@
 MlclspApp::Application.routes.draw do
+  get "resources/index"
+
+  #get "dependencies/index"
+
+  #get "products/index"
+
+  #get "problem_solutions/index"
+
   resources :demands
 
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]
+  resources :problem_solutions
+  resources :products
+  resources :dependencies
+  resources :resources
 
   match '/signup', :to => 'users#new'
   match '/signin', :to => 'sessions#new'

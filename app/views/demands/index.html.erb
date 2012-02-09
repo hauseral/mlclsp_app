@@ -2,11 +2,24 @@
 
 <table>
   <tr>
-    <th>Period</th>
-    <th> Demands</th>
-    <th>Demand quantity</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Product name</th>
+    <th>period</th>
+    <th>demand quantity</th>
   </tr>
+
+<% @demands.each do |demand| %>
+  <tr>
+    <td><%= demand.product_name %></td>
+    <td><%= demand.period %></td>
+    <td><%= demand.demand_quantity %></td>
+    <td><%= link_to 'Show', demand %></td>
+    <td><%= link_to 'Edit', edit_demand_path(demand) %></td>
+    <td><%= link_to 'Destroy', demand, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
 </table>
+
+<br />
+
+<%= link_to 'New demand', new_demand_path %> |
+<%= link_to 'Data Input', problem_solutions_path %>

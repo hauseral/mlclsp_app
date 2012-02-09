@@ -10,11 +10,49 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120206162439) do
+ActiveRecord::Schema.define(:version => 20120208124252) do
 
   create_table "demands", :force => true do |t|
+    t.string   "product_name"
     t.integer  "period"
-    t.integer  "demands"
+    t.integer  "demand_quantity"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "dependencies", :force => true do |t|
+    t.string   "product_name"
+    t.string   "follower"
+    t.integer  "coefficient"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "product_solutions", :force => true do |t|
+    t.string   "product_name"
+    t.integer  "period"
+    t.integer  "production_quantity"
+    t.integer  "inventory"
+    t.boolean  "setup"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "products", :force => true do |t|
+    t.string   "product_name"
+    t.integer  "leadtime_shift"
+    t.string   "resource"
+    t.integer  "setup_time"
+    t.integer  "setup_cost"
+    t.integer  "storage_cost"
+    t.integer  "working_time"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "resources", :force => true do |t|
+    t.string   "resource"
+    t.integer  "period"
     t.integer  "capacity"
     t.datetime "created_at"
     t.datetime "updated_at"

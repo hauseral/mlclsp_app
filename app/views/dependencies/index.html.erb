@@ -1,0 +1,25 @@
+<h1>Listing dependencies</h1>
+
+<table>
+  <tr>
+    <th>product name</th>
+    <th>follower</th>
+    <th>coefficient</th>
+  </tr>
+
+<% @dependencies.each do |dependency| %>
+  <tr>
+    <td><%= resource.product_name %></td>
+    <td><%= resource.follower %></td>
+    <td><%= resource.coefficient%></td>
+    <td><%= link_to 'Show', dependency %></td>
+    <td><%= link_to 'Edit', edit_dependency_path(dependency) %></td>
+    <td><%= link_to 'Destroy', dependency, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New dependency', new_dependency_path %> |
+<%= link_to 'Data Input', problem_solutions_path %>

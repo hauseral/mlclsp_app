@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>product name:</b>
+  <%= @dependency.product_name %>
+</p>
+
+<p>
+  <b>follower:</b>
+  <%= @dependency.follower %>
+</p>
+
+<p>
+  <b>coefficient:</b>
+  <%= @dependency.coefficient %>
+</p>
+
+
+<%= link_to 'Edit', edit_dependency_path(@dependency) %> |
+<%= link_to 'Back', dependencies_path %>

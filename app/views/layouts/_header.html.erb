@@ -1,12 +1,10 @@
 <header>
   <nav class="round">
     <ul>
-      <% if signed_in? %>
-      <p><li><%= link_to "MLCLSP", demands_path %> you can type in the quantites of your products  </li></p>
-      <% end %>
       <li><%= link_to "Home", root_path %></li>
       <% if signed_in? %>
       <li><%= link_to "Profile", current_user %></li>
+      <li><%= link_to "MLCLSP", problem_solutions_path %> </li>
       <% end %>
       <% if signed_in? %>
       <li><%= link_to "Sign out", signout_path, :method => :delete %></li>

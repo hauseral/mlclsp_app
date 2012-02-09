@@ -1,6 +1,6 @@
 class DemandsController < ApplicationController
   def index
-    @demand = Demand.all
+    @demands = Demand.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -50,11 +50,11 @@ class DemandsController < ApplicationController
   # PUT /sources/1
   # PUT /sources/1.json
   def update
-    @demand = Source.find(params[:id])
+    @demand = Demand.find(params[:id])
 
     respond_to do |format|
       if @demand.update_attributes(params[:demand])
-        format.html { redirect_to @demand, notice: 'Source was successfully updated.' }
+        format.html { redirect_to @demand, notice: 'Demand was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }
@@ -66,7 +66,7 @@ class DemandsController < ApplicationController
   # DELETE /sources/1
   # DELETE /sources/1.json
   def destroy
-    @demand = Source.find(params[:id])
+    @demand = Demand.find(params[:id])
     @demand.destroy
 
     respond_to do |format|
