@@ -1,4 +1,7 @@
 module ApplicationHelper
+  def my_logo
+    return image_tag("my_logo.png", :alt => "Mlclsp-Application", :class => "round")
+  end
  # Return a title on a per-page basis.
   def title                         #Definition der Methode title
     base_title = "MLCLSP App"       #Zuweisung der Ausprägung MLCLSP App der Variable base_title

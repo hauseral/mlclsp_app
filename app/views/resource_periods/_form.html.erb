@@ -12,16 +12,15 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :capacity %><br />
-    <%= f.text_field :capacity %>
-  </div>
-
-  <div class="field">
     <%= f.label :resource_id %><br />
-    <%= f.text_field :capacity %>
+    <%= f.collection_select :resource_id, Resource.find(:all), :id, :resource_name %>
   </div>
   <div class="field">
-    <%= f.label :period_id %><br />
+     <%= f.label :period_id %><br />
+     <%= f.collection_select :period_id, Period.find(:all), :id, :period_name %>
+   </div>
+  <div class="field">
+    <%= f.label :capacity %><br />
     <%= f.text_field :capacity %>
   </div>
   <div class="actions">

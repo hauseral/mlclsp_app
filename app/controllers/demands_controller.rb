@@ -1,5 +1,6 @@
 class DemandsController < ApplicationController
   def index
+    @title = "Listing Demands"
     @demands = Demand.all
 
     respond_to do |format|
@@ -9,6 +10,7 @@ class DemandsController < ApplicationController
   end
 
   def show
+    @title = "Show Demand"
     @demand = Demand.find(params[:id])
 
     respond_to do |format|
@@ -18,6 +20,7 @@ class DemandsController < ApplicationController
   end
 
   def new
+    @title = "New Demand"
     @demand = Demand.new
 
     respond_to do |format|
@@ -28,6 +31,7 @@ class DemandsController < ApplicationController
 
  # GET /sources/1/edit
   def edit
+    @title = "Editing Demand"
     @demand = Demand.find(params[:id])
   end
 

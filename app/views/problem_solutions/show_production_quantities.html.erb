@@ -1,0 +1,17 @@
+<%= @title = "Production Quantities Results" %>
+<table>
+  <tr>
+    <th>Product name</th>
+    <th>Period name</th>
+    <th>Production quantity</th>
+  </tr>
+
+  <% ProblemSolution.all.each do |di| %>
+
+  <tr>
+  <td><%= di.product_name %></td>
+  <td><%= di.period_name %></td>
+  <td><%= di.production_quantity %></td>
+  </tr>
+   <% end %>
+</table>

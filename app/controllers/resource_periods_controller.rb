@@ -2,6 +2,7 @@ class ResourcePeriodsController < ApplicationController
   # GET /resource_periods
   # GET /resource_periods.json
   def index
+    @title = "Listing Resource Capacities"
     @resource_periods = ResourcePeriod.all
 
     respond_to do |format|
@@ -13,6 +14,7 @@ class ResourcePeriodsController < ApplicationController
   # GET /resource_periods/1
   # GET /resource_periods/1.json
   def show
+    @title = "Show Resource Capacity"
     @resource_period = ResourcePeriod.find(params[:id])
 
     respond_to do |format|
@@ -24,6 +26,7 @@ class ResourcePeriodsController < ApplicationController
   # GET /resource_periods/new
   # GET /resource_periods/new.json
   def new
+    @title = "New Resource Capacity"
     @resource_period = ResourcePeriod.new
 
     respond_to do |format|
@@ -34,6 +37,7 @@ class ResourcePeriodsController < ApplicationController
 
   # GET /resource_periods/1/edit
   def edit
+    @title = "Editing Resource Capacity"
     @resource_period = ResourcePeriod.find(params[:id])
   end
 

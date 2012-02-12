@@ -1,22 +1,28 @@
-<h1>Data Input for the MLCLSP</h1>
+<h1>Data Input & Solution for the MLCLSP</h1>
 <p>
+  <li><%= link_to "Here", resources_path%> you can enter the resources!</li>
   <li><%= link_to "Here", products_path %> you can enter the products features!</li>
   <li><%= link_to "Here", followers_path %> you can enter the followers!</li>
   <li><%= link_to "Here", follower_products_path %> you can enter the product dependencies!</li>
   <li><%= link_to "Here", periods_path %> you can enter the necessary periods!</li>
   <li><%= link_to "Here", demands_path %> you can enter the demand quantities!</li>
-  <li><%= link_to "Here", resources_path%> you can enter the resources!</li>
-  <li><%= link_to "Here", resource_periods_path %> you can enter the resource capacity!</li>
 
+  <li><%= link_to "Here", resource_periods_path %> you can enter the resource capacity!</li>
+<br />
+
+<%= objective_function_value_response %>
 
 
 
 <br />
 
-<%#= button_to "lösche", :controller => "problem_solutions", :action => "delete_production_quantities" %>
-<%#= button_to "lese den Zielfunktionswert ein", :controller => "transport_links", :action => "read_and_show_ofv" %>
-<%#= button_to "Lese ein", :controller => 'problem_solutions', :action =>  'read_transportation_quantities'  %>
-<%#= button_to "Optimiere", :controller => 'problem_solutions', :action =>  'optimize'  %>
+<%= button_to "Optimize", :controller => 'problem_solutions', :action =>  'optimize'  %>
+<%= button_to "Import", :controller => 'problem_solutions', :action =>  'read_production_quantities'  %>
+<%= button_to "Import Objective", :controller => 'problem_solutions', :action => "read_and_show_ofv" %>
+<%= button_to "Show production quantities", :controller => 'problem_solutions', :action =>  'show_production_quantities'  %>
+<%= button_to "Show inventory quantities", :controller => 'problem_solutions', :action => 'show_inventory_quantities' %>
+<%= button_to "Delete", :controller => "problem_solutions", :action => "delete_production_quantities" %>
+
 
 
 

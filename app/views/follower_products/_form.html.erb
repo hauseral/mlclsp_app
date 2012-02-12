@@ -11,16 +11,14 @@
     </div>
   <% end %>
 
-   <div class="field">
+  <div class="field">
     <%= f.label :product_id %><br />
-    <%= f.collection_select :product_id,  Product.find(:all), :id, :product_name %>
+    <%= f.collection_select :product_id, Product.find(:all), :id, :product_name %>
   </div>
-
    <div class="field">
     <%= f.label :follower_id %><br />
-    <%= f.collection_select :follower_id,  Follower.find(:all), :id, :follower_name %>
+    <%= f.collection_select :follower_id, Follower.find(:all), :id, :follower_name %>
   </div>
-
   <div class="field">
     <%= f.label :coefficient %><br />
     <%= f.text_field :coefficient %>

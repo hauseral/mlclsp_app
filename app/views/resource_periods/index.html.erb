@@ -1,19 +1,17 @@
-<h1>Listing resource periods</h1>
+<h1>Listing Resource Capacity</h1>
 
 <table>
   <tr>
-    <th>Resource name</th>
-    <th>Period name</th>
+    <th>Resource Name</th>
+    <th>Period Name</th>
     <th>Capacity</th>
-    <th></th>
-    <th></th>
     <th></th>
   </tr>
 
 <% @resource_periods.each do |resource_period| %>
   <tr>
-    <td><%= resource_period.resource.resource_name%></td>
-    <td><%= resource_period.period.period_name%></td>
+    <td><%= resource_period.resource.resource_name %></td>
+    <td><%= resource_period.period.period_name %></td>
     <td><%= resource_period.capacity %></td>
     <td><%= link_to 'Show', resource_period %></td>
     <td><%= link_to 'Edit', edit_resource_period_path(resource_period) %></td>
@@ -24,5 +22,4 @@
 
 <br />
 
-<%= link_to 'New Resource period', new_resource_period_path %> |
-<%= link_to 'Data Input', problem_solutions_path %>
+<%= link_to 'New Resource period', new_resource_period_path %>

@@ -2,6 +2,7 @@ class ResourcesController < ApplicationController
   # GET /resources
   # GET /resources.json
   def index
+    @title = "Listing Resources"
     @resources = Resource.all
 
     respond_to do |format|
@@ -13,6 +14,7 @@ class ResourcesController < ApplicationController
   # GET /resources/1
   # GET /resources/1.json
   def show
+    @title = "Show Resource"
     @resource = Resource.find(params[:id])
 
     respond_to do |format|
@@ -24,6 +26,7 @@ class ResourcesController < ApplicationController
   # GET /resources/new
   # GET /resources/new.json
   def new
+    @title = "New Resource"
     @resource = Resource.new
 
     respond_to do |format|
@@ -34,6 +37,7 @@ class ResourcesController < ApplicationController
 
   # GET /resources/1/edit
   def edit
+    @title = "Editing Resource"
     @resource = Resource.find(params[:id])
   end
 

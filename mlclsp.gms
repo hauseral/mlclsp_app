@@ -3,12 +3,12 @@
 *Stand: 31.01.2012
 option optcr=0.00;
 option limrow = 20;
-$include mlclsp_include_instanz_3.inc
+$include mlclsp_include_instanz.inc
 
 Variables
          F Zielfunktionswert;
 Positive variables
-         q(k,t) Losgroeße fuer Arbeitsgang k und Periode t
+         q(k,t) Losgroeï¿½e fuer Arbeitsgang k und Periode t
          y(k,t) Lagerbestand fuer Produkt k am Ende der Periode t
 ;
 Binary variables
@@ -17,7 +17,7 @@ Binary variables
 
 Equations
          Ziel Zielfunktion Minimierung der Kosten
-         Bilanz(k,t) Lagerbilanz für Produkt k und Ressource j
+         Bilanz(k,t) Lagerbilanz fï¿½r Produkt k und Ressource j
          Kapa(j,t) Kapazitaetsrestriktion fuer Ressource j und Periode t
          Restr(k,t)
 ;
@@ -45,3 +45,46 @@ model mlclsp /
 solve mlclsp minimizing F using mip;
 
 display q.l, y.l, g.l;
+
+
+file outputfile1 / 'mlclsp_solution_1.txt'/;
+put outputfile1;
+
+
+loop(k,
+         loop(t$(q.l(k,t)>0),
+                 put k.tl:0, ' ; ' t.tl:0, ' ; ' q.l(k,t) /
+         );
+);
+putclose outputfile1;
+
+file outputfile3 / 'mlclsp_solution_2.txt'/;
+put outputfile3;
+
+loop(k,
+         loop(t$(y.l(k,t)>0),
+                 put k.tl:0, ' ; ' t.tl:0, ' ; ' y.l(k,t) /
+         );
+);
+putclose outputfile3;
+
+
+file outputfile4 / 'mlclsp_solution_3.txt'/;
+put outputfile4;
+loop(k,
+         loop(t$(g.l(k,t)>0),
+                 put k.tl:0, ' ; ' t.tl:0, ' ; ' g.l(k,t) /
+         );
+);
+
+putclose outputfile4;
+
+
+file outputfile2 / 'Objective_F_Value.txt'/;
+put outputfile2;
+
+
+put 'Objective_F_Value:  ',F.l /
+put '**************************'
+
+putclose outputfile2;

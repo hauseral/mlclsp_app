@@ -1,6 +1,7 @@
 class Product < ActiveRecord::Base
   # has_many :resources, :dependent => :destroy
    has_many :demands, :dependent => :destroy
+  # belongs_to :resource, :class_name => "Resource"
 
 
  # belongs_to :demand, :class_name => Demand

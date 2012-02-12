@@ -1,20 +1,17 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Resource name:</b>
+  <b>resource name:</b>
   <%= @resource_period.resource_id %>
 </p>
-
 <p>
-  <b>Period name:</b>
+  <b>period name:</b>
   <%= @resource_period.period_id %>
 </p>
-
 <p>
   <b>Capacity:</b>
   <%= @resource_period.capacity %>
 </p>
-
 
 <%= link_to 'Edit', edit_resource_period_path(@resource_period) %> |
 <%= link_to 'Back', resource_periods_path %>

@@ -7,14 +7,14 @@ MlclspApp::Application.routes.draw do
 
   resources :followers
 
-  #get "resources/index"
+  #get "pages/about"
 
   #get "dependencies/index"
 
   #get "products/index"
 
   #get "problem_solutions/index"
-
+  match 'problem_solutions/optimize', :to => 'problem_solutions#optimize'
   resources :demands
 
   resources :users
@@ -28,8 +28,13 @@ MlclspApp::Application.routes.draw do
   match '/signout', :to => 'sessions#destroy'
  # match 'demands/show',  :to => 'demands#show'
 #  match '/new', :to => 'demands#new'
-
+  match 'problem_solutions/read_and_show_ofv', :to => 'problem_solutions#read_and_show_ofv'
+  match 'problem_solutions/read_production_quantities', :to => 'problem_solutions#read_production_quantities'
+  match 'problem_solutions/show_production_quantities', :to => 'problem_solutions#show_production_quantities'
+  match 'problem_solutions/show_inventory_quantities', :to => 'problem_solutions#show_inventory_quantities'
+  match 'problem_solutions/dele_production_quantities', :to => 'problem_solutions#delete_production_quantities'
   root :to => 'pages#home'
+  match '/about',   :to => 'pages#about'
 
 
 

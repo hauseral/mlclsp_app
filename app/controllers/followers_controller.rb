@@ -2,6 +2,7 @@ class FollowersController < ApplicationController
   # GET /followers
   # GET /followers.json
   def index
+    @title = "Listing Followers"
     @followers = Follower.all
 
     respond_to do |format|
@@ -13,6 +14,7 @@ class FollowersController < ApplicationController
   # GET /followers/1
   # GET /followers/1.json
   def show
+    @title = "Show Follower"
     @follower = Follower.find(params[:id])
 
     respond_to do |format|
@@ -24,6 +26,7 @@ class FollowersController < ApplicationController
   # GET /followers/new
   # GET /followers/new.json
   def new
+    @title = "New Follower"
     @follower = Follower.new
 
     respond_to do |format|
@@ -34,6 +37,7 @@ class FollowersController < ApplicationController
 
   # GET /followers/1/edit
   def edit
+    @title = "Editing Follower"
     @follower = Follower.find(params[:id])
   end
 

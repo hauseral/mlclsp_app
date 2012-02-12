@@ -2,6 +2,7 @@ class FollowerProductsController < ApplicationController
   # GET /follower_products
   # GET /follower_products.json
   def index
+    @title = "Listing Product Dependencies"
     @follower_products = FollowerProduct.all
 
     respond_to do |format|
@@ -13,6 +14,7 @@ class FollowerProductsController < ApplicationController
   # GET /follower_products/1
   # GET /follower_products/1.json
   def show
+    @title = "Show Product Dependency"
     @follower_product = FollowerProduct.find(params[:id])
 
     respond_to do |format|
@@ -24,6 +26,7 @@ class FollowerProductsController < ApplicationController
   # GET /follower_products/new
   # GET /follower_products/new.json
   def new
+    @title = "New Product Dependency"
     @follower_product = FollowerProduct.new
 
     respond_to do |format|
@@ -34,6 +37,7 @@ class FollowerProductsController < ApplicationController
 
   # GET /follower_products/1/edit
   def edit
+    @title = "Editing Product Dependency"
     @follower_product = FollowerProduct.find(params[:id])
   end
 

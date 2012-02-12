@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :follower_name %><br />
-    <%= f.collection_select :follower_name,  Product.find(:all), :product_name, :product_name %>
+    <%= f.collection_select :follower_name, Product.find(:all), :product_name, :product_name %>
   </div>
   <div class="actions">
     <%= f.submit %>

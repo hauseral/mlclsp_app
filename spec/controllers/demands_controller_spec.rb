@@ -2,14 +2,14 @@ require 'spec_helper'
 
 describe DemandsController do
 
-  describe "GET 'typein'" do
+  describe "GET 'demands'" do
     it "should be successful" do
-      get 'typein'
+      get 'demands'
       response.should be_success
     end
   end
     it "should have the right title" do   #Test auf die richtige Bezeichnung im Titel
-      get 'typein'
+      get 'demands'
       response.should have_selector("title",
                         :content => "MLCLSP App | Typein")
     end
